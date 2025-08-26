@@ -13,6 +13,7 @@ const clientiRoutes = require('./routes/clienti');
 const allegatiRoutes = require('./routes/allegati');
 const authRoutes = require('./routes/auth');
 const usersRouter = require('./routes/users');
+const taskLogsRoutes = require('./routes/taskLogs');
 
 
 
@@ -31,6 +32,7 @@ app.use('/api/clienti', clientiRoutes);
 app.use('/api/allegati', allegatiRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/users', usersRouter);
+app.use('/api/task-logs', taskLogsRoutes);
 
 app.get('/api/test-clienti', async (req, res) => {
   try {

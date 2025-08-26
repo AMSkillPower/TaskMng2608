@@ -42,6 +42,7 @@ function App() {
     if (path.startsWith('/task')) return 'task';
     if (path.startsWith('/software')) return 'software';
     if (path.startsWith('/users')) return 'users';
+    if (path.startsWith('/logs')) return 'logs';
     return 'dashboard';
   };
 
@@ -62,7 +63,7 @@ function App() {
         <Route path="/software" element={<SoftwareManager />} />
         <Route path="/users" element={<UserManager />} />
         <Route path="/task/:taskId/edit" element={<TaskEdit />} />
-        <Route  path="/admin/logs"  element= {<TaskLogs />} />
+        <Route path="/logs" element={<TaskLogs />} />
       </Routes>
     </Layout>
   );

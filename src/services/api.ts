@@ -159,6 +159,18 @@ class ApiService {
     return res.json(); // ritorna array [{ username: string }]
   }
 
+  // Task Logs API
+  async getTaskLogs(): Promise<import("../types").TaskLog[]> {
+    return this.request<import("../types").TaskLog[]>('/task-logs');
+  }
+
+  async getTaskLogsByTask(codiceTask: string): Promise<import("../types").TaskLog[]> {
+    return this.request<import("../types").TaskLog[]>(`/task-logs/${codiceTask}`);
+  }
+
+  async getTaskLogsByUser(utente: string): Promise<import("../types").TaskLog[]> {
+    return this.request<import("../types").TaskLog[]>(`/task-logs/user/${utente}`);
+  }
 }
 
 export const apiService = new ApiService();

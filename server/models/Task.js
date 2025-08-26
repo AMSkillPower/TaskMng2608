@@ -113,14 +113,26 @@ class Task {
   static async delete(id) {
     try {
       const pool = await getPool();
+      
+      // Prima ottieni i dati del task per il log
+      const taskResult = await pool.request()
+        .input('id', sql.Int, id)
+        .query('SELECT codiceTask, descrizione FROM Task WHERE id = @id');
+      
+      const task = taskResult.recordset[0];
+      
       await pool.request()
         .input('id', sql.Int, id)
         .query('DELETE FROM Task WHERE id = @id');
+      
+      if (task) {
         await this.createLog({
-        utente: 'System', // o l'utente che ha effettuato l'azione
-        codiceTask: task.codiceTask,
-        eventLog: `Task eliminato: ${task.descrizione}`
-      });
+          utente: 'System',
+          codiceTask: task.codiceTask,
+          eventLog: `Task eliminato: ${task.descrizione}`
+        });
+      }
+      
       return true;
     } catch (error) {
       throw new Error(`Errore nell'eliminazione del task: ${error.message}`);

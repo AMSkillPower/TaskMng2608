@@ -1,10 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const Task = require('../models/Task');
-const { isAdmin } = require('../middleware/auth');
 
-// GET /api/task-logs - Ottieni tutti i log (solo admin)
-router.get('/', isAdmin, async (req, res) => {
+// GET /api/task-logs - Ottieni tutti i log
+router.get('/', async (req, res) => {
   try {
     const logs = await Task.getLogs();
     res.json(logs);

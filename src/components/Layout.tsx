@@ -33,7 +33,11 @@ const Layout: React.FC<LayoutProps> = ({ children, currentPage, onPageChange }) 
     { id: 'task', icon: LayoutList, label: 'Task', count: state.task.length },
     { id: 'software', icon: FolderCode,  label: 'Software', count: state.software.length },
     // Mostra la voce "Utenti" solo per gli utenti Admin
-    ...(user?.role === 'Admin' ? [{ id: 'users', icon: Users, label: 'Utenti', count: null }] : [])];
+    ...(user?.role === 'Admin' ? [
+      { id: 'users', icon: Users, label: 'Utenti', count: null },
+      { id: 'logs', icon: BarChart3, label: 'Log Attività', count: null }
+    ] : [])
+  ];
 
 const handlePageChange = (page: string) => {
   navigate(page === 'dashboard' ? '/' : `/${page}`, { replace: true });
