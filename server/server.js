@@ -18,6 +18,7 @@ const clientiRoutes = require('./routes/clienti');
 const allegatiRoutes = require('./routes/allegati');
 const authRoutes = require('./routes/auth');
 const usersRouter = require('./routes/users');
+const taskLogsRoutes = require('./routes/taskLogs');
 
 app.use('/api/users', usersRouter);
 app.use('/api/auth', authRoutes);
@@ -25,6 +26,7 @@ app.use('/api/allegati', allegatiRoutes);
 app.use('/api/software', softwareRoutes);
 app.use('/api/task', taskRoutes);
 app.use('/api/clienti', clientiRoutes);
+app.use('/api/task-logs', taskLogsRoutes);
 
 // Frontend
 const frontendPath = path.join(__dirname, '..', 'dist');

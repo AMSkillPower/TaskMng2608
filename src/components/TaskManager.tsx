@@ -158,6 +158,10 @@ const saveInlineEdit = async () => {
     );
 
     dispatch({ type: "UPDATE_TASK", payload: updatedTask });
+    
+    // Log dell'azione di modifica inline
+    console.log(`Modifica inline: ${editingCell.field} di ${taskToUpdate.codiceTask} aggiornato a "${editingValue}"`);
+    
     setEditingCell(null);
     setEditingValue('');
   } catch (error) {
